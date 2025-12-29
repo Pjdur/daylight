@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 20px;
-  background: #f7fbff; /* soft light blue-white */
+  background: #f7fbff;
   color: #333;
   font-family: "Inter", "Segoe UI", sans-serif;
 }
@@ -11,19 +11,66 @@ h1 {
   margin-bottom: 20px;
   color: #445;
   font-weight: 500;
-  letter-spacing: 0.5px;
+}
+
+#controls {
+  max-width: 600px;
+  margin: 0 auto 15px auto;
+}
+
+#newEntry {
+  padding: 8px 14px;
+  background: #e3efff;
+  border: 1px solid #c5d9f5;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#entryList {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#entryList li {
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  background: #ffffff;
+  border: 1px solid #d5e0ea;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#entryList li:hover {
+  background: #eef4ff;
+}
+
+#entryTitle {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto 10px auto;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #d5e0ea;
+  border-radius: 6px;
+  background: #ffffff;
 }
 
 textarea {
   width: 100%;
-  height: 80vh;
+  max-width: 600px;
+  height: 60vh;
+  display: block;
+  margin: 10px auto;
   background: #ffffff;
   color: #333;
-  border: 1px solid #cfd8e3;
+  border: 1px solid #d5e0ea;
   padding: 15px;
   font-size: 16px;
   line-height: 1.5;
   resize: none;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.04);
+  box-shadow: 0 0 10px rgba(0,0,0,0.03);
 }
