@@ -12,6 +12,11 @@ function renderEntries() {
   entries.forEach(entry => {
     const li = document.createElement("li");
     li.textContent = entry.title;
+
+    if (entry.id === currentEntryId) {
+      li.classList.add("active");
+    }
+
     li.onclick = () => loadEntry(entry.id);
     entryList.appendChild(li);
   });
@@ -37,6 +42,8 @@ function loadEntry(id) {
   currentEntryId = id;
   titleInput.value = entry.title;
   diary.value = entry.text;
+
+  renderEntries();
 }
 
 // Save entries to localStorage
