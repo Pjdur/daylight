@@ -6,6 +6,9 @@ const titleInput = document.getElementById("entryTitle");
 const newEntryBtn = document.getElementById("newEntry");
 const entryList = document.getElementById("entryList");
 
+const placeholder = document.getElementById("placeholder");
+const editor = document.getElementById("editor");
+
 // Render list of entries
 function renderEntries() {
   entryList.innerHTML = "";
@@ -59,6 +62,9 @@ function loadEntry(id) {
   titleInput.value = entry.title;
   diary.value = entry.text;
 
+  placeholder.style.display = "none";
+  editor.style.display = "block";
+
   renderEntries();
 }
 
@@ -66,11 +72,12 @@ function loadEntry(id) {
 function deleteEntry(id) {
   entries = entries.filter(e => e.id !== id);
 
-  // If deleting the active entry, clear editor
   if (currentEntryId === id) {
     currentEntryId = null;
     titleInput.value = "";
     diary.value = "";
+    editor.style.display = "none";
+    placeholder.style.display = "block";
   }
 
   saveEntries();
