@@ -9,15 +9,31 @@ const entryList = document.getElementById("entryList");
 // Render list of entries
 function renderEntries() {
   entryList.innerHTML = "";
+
   entries.forEach(entry => {
     const li = document.createElement("li");
-    li.textContent = entry.title;
+
+    const titleSpan = document.createElement("span");
+    titleSpan.textContent = entry.title;
+    titleSpan.style.flex = "1";
+
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "✕";
+    delBtn.className = "delete-btn";
+    delBtn.onclick = (e) => {
+      e.stopPropagation();
+      deleteEntry(entry.id);
+    };
 
     if (entry.id === currentEntryId) {
       li.classList.add("active");
     }
 
+    li.appendChild(titleSpan);
+    li.appendChild(delBtn);
+
     li.onclick = () => loadEntry(entry.id);
+
     entryList.appendChild(li);
   });
 }
@@ -43,6 +59,21 @@ function loadEntry(id) {
   titleInput.value = entry.title;
   diary.value = entry.text;
 
+  renderEntries();
+}
+
+// Delete an entry
+function deleteEntry(id) {
+  entries = entries.filter(e => e.id !== id);
+
+  // If deleting the active entry, clear editor
+  if (currentEntryId === id) {
+    currentEntryId = null;
+    titleInput.value = "";
+    diary.value = "";
+  }
+
+  saveEntries();
   renderEntries();
 }
 
