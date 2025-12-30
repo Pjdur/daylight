@@ -62,8 +62,13 @@ function loadEntry(id) {
   titleInput.value = entry.title;
   diary.value = entry.text;
 
+  // Hide placeholder
   placeholder.style.display = "none";
+  placeholder.classList.remove("visible");
+
+  // Show editor with fade-in
   editor.style.display = "block";
+  requestAnimationFrame(() => editor.classList.add("visible"));
 
   renderEntries();
 }
@@ -76,8 +81,14 @@ function deleteEntry(id) {
     currentEntryId = null;
     titleInput.value = "";
     diary.value = "";
+
+    // Hide editor
+    editor.classList.remove("visible");
     editor.style.display = "none";
+
+    // Show placeholder with fade-in
     placeholder.style.display = "block";
+    requestAnimationFrame(() => placeholder.classList.add("visible"));
   }
 
   saveEntries();
@@ -108,3 +119,6 @@ titleInput.addEventListener("input", () => {
 
 // Initial load
 renderEntries();
+
+// Show placeholder on first load
+placeholder.classList.add("visible");

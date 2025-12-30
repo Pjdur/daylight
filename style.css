@@ -18,6 +18,10 @@ body {
     border-right: 1px solid #d5e0ea;
     padding: 20px;
     box-sizing: border-box;
+
+    /* Fade-in animation */
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
 }
 
 #sidebar h2 {
@@ -35,6 +39,15 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+#newEntry:hover {
+    background: #dbe8ff;
+    transform: translateY(-1px);
 }
 
 #entryList {
@@ -55,10 +68,17 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+
+    /* Smooth transitions */
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
 }
 
 #entryList li:hover {
     background: #e8f0ff;
+    transform: translateY(-1px); /* gentle lift */
 }
 
 #entryList li.active {
@@ -74,6 +94,8 @@ body {
     font-size: 14px;
     cursor: pointer;
     padding: 2px 4px;
+
+    transition: color 0.2s ease;
 }
 
 .delete-btn:hover {
@@ -85,6 +107,10 @@ body {
     flex: 1;
     padding: 30px;
     box-sizing: border-box;
+
+    /* Fade-in */
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
 }
 
 /* Placeholder screen */
@@ -92,6 +118,13 @@ body {
     text-align: center;
     margin-top: 20vh;
     color: #556;
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#placeholder.visible {
+    opacity: 1;
 }
 
 #placeholder h1 {
@@ -101,7 +134,15 @@ body {
 
 /* Editor */
 #editor {
-    display: none; /* hidden until an entry is selected */
+    display: none;
+
+    /* Fade-in when shown */
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+#editor.visible {
+    opacity: 1;
 }
 
 #entryTitle {
@@ -114,6 +155,12 @@ body {
     border: 1px solid #d5e0ea;
     border-radius: 6px;
     background: #ffffff;
+
+    transition: box-shadow 0.2s ease;
+}
+
+#entryTitle:focus {
+    box-shadow: 0 0 6px rgba(150, 180, 255, 0.4);
 }
 
 textarea {
@@ -131,4 +178,17 @@ textarea {
     resize: none;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+
+    transition: box-shadow 0.2s ease;
+}
+
+textarea:focus {
+    box-shadow: 0 0 8px rgba(150, 180, 255, 0.35);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
