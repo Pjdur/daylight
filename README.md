@@ -25,6 +25,20 @@ Daylight was created as a lightweight alternative to heavy note‑taking apps. I
 
 No frameworks, no build tools.
 
+## Single‑File Build
+
+Daylight includes a small Rust script that bundles the HTML, CSS, and JavaScript into a single daylight.html file. This file is available in the GitHub Releases section.
+
+To build it yourself:
+
+```bash
+rustc build_daylight.rs
+./build_daylight
+```
+
+This generates a standalone daylight.html that contains all code in one file.
+(The app is HTML/CSS/JS, the build script is Rust because why not.)
+
 ## License
 
 This project is licensed under the MIT License.
